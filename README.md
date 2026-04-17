@@ -1,16 +1,17 @@
-# React + Vite
+# ecommerce
+쇼핑몰 구현
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Conventional Commits
+- **feat**: 새로운 기능 추가
+- **fix**: 버그 수정
+- **docs**: 문서 수정
+- **style**: 코드 스타일 변경 (공백, 포맷, 세미콜론 등, 로직 변경 없음)
+- **refactor**: 기능 변경 없는 코드 리팩토링
+- **perf**: 성능 개선
+- **test**: 테스트 추가 또는 수정
+- **chore**: 빌드 설정, 패키지 관리, 기타 잡무 (운영 코드 변경 없음)
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Examples
+- feat: add user login API
+- fix: resolve 504 gateway timeout
+- refactor: simplify MyBatis mapper query
