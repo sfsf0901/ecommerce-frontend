@@ -70,16 +70,16 @@ const ProductCard = ({
                     {specialPrice ? (
                         <div className="flex flex-col">
                             <span className="text-gray-400 line-through">
-                                ₩ {price.toLocaleString()}
+                                ₩{price.toLocaleString()}
                             </span>
                             <span className="text-xl font-bold text-slate-700">
-                                ₩ {specialPrice.toLocaleString()}
+                                ₩{specialPrice.toLocaleString()}
                             </span>
                         </div>
                     ) : (
                         <span className="text-xl font-bold text-slate-700">
                             {"  "}
-                            ₩ {price.toLocaleString()}
+                            ₩{price.toLocaleString()}
                         </span>
                     )}
 
