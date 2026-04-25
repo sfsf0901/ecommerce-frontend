@@ -42,13 +42,13 @@ function ProductViewModal({open, setOpen, product, isAvailable}) {
                                                     ₩{price.toLocaleString()}
                                                 </span>
                                                 <span className="sm:text-xl font-semibold text-slate-700">
-                                                    ₩{price.toLocaleString()}
+                                                    ₩{specialPrice.toLocaleString()}
                                                 </span>
                                             </div>
                                         ) : (
                                             <span className="text-xl font-bold">
                                                 {" "}
-                                                ₩{price.toLocaleString()}
+                                                ₩{price?.toLocaleString()}
                                             </span>
                                         )}
 
