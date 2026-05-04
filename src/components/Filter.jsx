@@ -1,6 +1,7 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {FiArrowUp, FiRefreshCw, FiSearch} from "react-icons/fi";
 import {Button, FormControl, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
+import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
 
 const Filter = () => {
     const categories = [
@@ -11,7 +12,24 @@ const Filter = () => {
         { categoryId: 4, categoryName: "Toys" },
     ];
 
+    const [searchParams] = useSearchParams();
+    const params = new URLSearchParams(searchParams);
+    const pathname = useLocation().pathname;
+    const navigate = useNavigate();
+
     const [category, setCategory] = useState("all");
+    const [sortOrder, setSortOrder] = useState("asc");
+    const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(() => {
+        const currentCategory = searchParams.get("category") || "all";
+        const currentSortOrder = searchParams.get("sortby") || "asc";
+        const currentSearchTerm = searchParams.get("keyword") || "";
+
+        setCategory(currentCategory);
+        setSortOrder(currentSortOrder);
+        setSearchTerm(currentSearchTerm);
+    }, [searchParams]);
 
     const handleCategoryChange = (event) => {
       setCategory(event.target.value);
