@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {FiArrowUp, FiRefreshCw, FiSearch} from "react-icons/fi";
+import {FiArrowDown, FiArrowUp, FiRefreshCw, FiSearch} from "react-icons/fi";
 import {Button, FormControl, InputLabel, MenuItem, Select, Tooltip} from "@mui/material";
 import { useLocation, useSearchParams, useNavigate } from "react-router-dom";
 
@@ -31,8 +31,46 @@ const Filter = () => {
         setSearchTerm(currentSearchTerm);
     }, [searchParams]);
 
+    useEffect(() => {
+        const handler = setTimeout(() => {
+            if (searchTerm) {
+                searchParams.set("keyword", searchTerm);
+            } else {
+                searchParams.delete("keyword");
+            }
+            navigate(`${pathname}?${searchParams.toString()}`);
+        }, 700);
+
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [searchParams, searchTerm, navigate, pathname]);
+
     const handleCategoryChange = (event) => {
-      setCategory(event.target.value);
+        const selectedCategory = event.target.value;
+
+        if (selectedCategory === "all") {
+            params.delete("category");
+        } else {
+            params.set("category", selectedCategory);
+        }
+
+        navigate(`${pathname}?${params}`);
+        setCategory(event.target.value);
+    };
+
+    const toggleSortOrder = () => {
+        setSortOrder((prevOrder) => {
+            const newOrder = (prevOrder === "asc") ? "desc" : "asc";
+            params.set("sortby", newOrder);
+            navigate(`${pathname}?${params}`);
+            return newOrder;
+        });
+    };
+
+    const handleClearFilters = () => {
+        navigate({ pathname: window.location.pathname });
+        setCategory("all");
     };
 
     return (
@@ -41,6 +79,8 @@ const Filter = () => {
             <input
                 type="text"
                 placeholder="Search products"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 className="border border-gray-400 text-slate-800 rounded-md py-2 pl-10 pr-4 w-full focus:outline-none focus:ring-2 focus:ring-[#1976d2]" />
             <FiSearch className="absolute left-3 text-slate-800 size={20}" />
         </div>
@@ -67,9 +107,16 @@ const Filter = () => {
             </FormControl>
 
             <Tooltip title="Sorted by price: asc">
-                <Button variant="contained" color="primary" className="flex items-center gap-2 h-10">
+                <Button variant="contained"
+                        onClick={toggleSortOrder}
+                        color="primary"
+                        className="flex items-center gap-2 h-10">
                     Sort By
-                    <FiArrowUp size={20} />
+                    {sortOrder === "asc" ? (
+                        <FiArrowUp size={20} />
+                    ) : (
+                        <FiArrowDown size={20} />
+                    )}
                 </Button>
             </Tooltip>
             <button className="flex items-center gap-2 bg-rose-900 text-white px-3 py-2 rounded-md transition duration-300 ease-in shadow-md focus:outline-none cursor-pointer">
