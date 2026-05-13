@@ -6,6 +6,7 @@ import useProductFilter from "./useProductFilter.jsx";
 import {useEffect} from "react";
 import {fetchCategories} from "../store/actions/index.js";
 import Loader from "./Loader.jsx";
+import {Pagination} from "@mui/material";
 
 const Products = () => {
     const { isLoading, errorMessage } = useSelector(
@@ -37,11 +38,15 @@ const Products = () => {
               </div>
           ) : (
               <div className="min-h-[700px]">
-                <div className="pb-6 pt-14 grid 2xl:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
-                    {products &&
-                    products.map((item, i) => <ProductCard key={i} {...item} />
-                    )}
-                </div>
+                  <div className="pb-6 pt-14 grid 2xl:grid-cols-2 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
+                      {products &&
+                      products.map((item, i) => <ProductCard key={i} {...item} />
+                      )}
+                  </div>
+
+                  <div className="flex justify-center pt-10">
+                      <Pagination />
+                  </div>
               </div>
           )}
       </div>
