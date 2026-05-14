@@ -6,13 +6,13 @@ import useProductFilter from "./useProductFilter.jsx";
 import {useEffect} from "react";
 import {fetchCategories} from "../store/actions/index.js";
 import Loader from "./Loader.jsx";
-import {Pagination} from "@mui/material";
+import Paginations from "./Paginations.jsx";
 
 const Products = () => {
     const { isLoading, errorMessage } = useSelector(
         (state) => state.errors
     );
-    const { products, categories } = useSelector(
+    const { products, categories, pagination } = useSelector(
         (state) => state.products
     );
 
@@ -45,7 +45,10 @@ const Products = () => {
                   </div>
 
                   <div className="flex justify-center pt-10">
-                      <Pagination />
+                      <Paginations
+                          numberOfPages = {pagination?.totalPages}
+                          totalProducts = {pagination?.totalElements}
+                      />
                   </div>
               </div>
           )}
