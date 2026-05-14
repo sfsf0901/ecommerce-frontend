@@ -3,7 +3,7 @@ import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
 
 const Paginations = ({numberOfPages, totalProducts}) => {
     const [searchParams] = useSearchParams();
-    const pathname = useLocation();
+    const pathname = useLocation().pathname;
     const params = new URLSearchParams(searchParams);
     const navigate = useNavigate();
     const paramValue = searchParams.get("page")
