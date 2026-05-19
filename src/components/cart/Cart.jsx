@@ -36,7 +36,7 @@ const Cart = () => {
                 <div className="flex text-sm gap-1 flex-col">
                     <div className="flex justify-between w-full md:text-lg text-sm font-semibold">
                         <span>Subtotal</span>
-                        <span>$400</span>
+                        <span>₩400</span>
                     </div>
 
                     <p className="text-slate-500">
