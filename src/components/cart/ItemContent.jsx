@@ -46,6 +46,14 @@ const ItemContent = ({
             <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
                 {Number(specialPrice)}
             </div>
+
+            <div className="justify-self-center">
+                {Number(quantity)}
+            </div>
+
+            <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
+                {Number(currentQuantity) * Number(specialPrice)}
+            </div>
         </div>
     );
 };
