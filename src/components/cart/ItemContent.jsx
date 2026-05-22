@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {HiOutlineTrash} from "react-icons/hi";
 import truncateText from "../../utils/truncateText.js";
+import SetQuantity from "./SetQuantity.jsx";
 
 const ItemContent = ({
     productId,
@@ -48,7 +49,12 @@ const ItemContent = ({
             </div>
 
             <div className="justify-self-center">
-                {Number(quantity)}
+                <SetQuantity
+                    quantity={currentQuantity}
+                    cardCounter={true}
+                    handleQtyIncrease={() => {}}
+                    handleQtyDecrease={() => {}}
+                />
             </div>
 
             <div className="justify-self-center lg:text-[17px] text-sm text-slate-600 font-semibold">
