@@ -1,4 +1,5 @@
 const btnStyles = "border-[1.2px] border-slate-800 px-3 py-1 rounded"
+
 const SetQuantity = ({
     quantity,
     cardCounter,
@@ -12,15 +13,16 @@ const SetQuantity = ({
                 <button
                     disabled={quantity <= 1}
                     className={btnStyles}
+                    onClick={handleQtyDecrease}
                 >
                     -
                 </button>
-                <div className="text-red-500">
-                    {quantity}
-                </div>
+
+                <div className="text-red-500">{quantity}</div>
+
                 <button
-                    disabled={quantity <= 1}
                     className={btnStyles}
+                    onClick={handleQtyIncrease}
                 >
                     +
                 </button>
